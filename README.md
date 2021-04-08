@@ -1,3 +1,13 @@
+This is a fork of pyrender with additional features
+
+1. A new keyboard shortcut to print and save current camera matrix, this makes it easier to generate thumbnail preview for an object mesh
+2. Add features to generate dense mapping between images (optical flow).
+
+In order to use this version, use `pip install -e .` to install this version.
+
+Examples for the new features can be found in the examples folder.
+
+---
 # Pyrender
 
 [![Build Status](https://travis-ci.org/mmatl/pyrender.svg?branch=master)](https://travis-ci.org/mmatl/pyrender)

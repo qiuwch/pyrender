@@ -106,6 +106,7 @@ class Viewer(pyglet.window.Window):
     - ``w``: Toggles wireframe mode
       (scene default, flip wireframes, all wireframe, or all solid).
     - ``z``: Resets the camera to the initial view.
+    - ``p``: Save the camera projection matrix
 
     Note
     ----
@@ -846,8 +847,22 @@ class Viewer(pyglet.window.Window):
         elif symbol == pyglet.window.key.Z:
             self._reset_view()
 
+        elif symbol == pyglet.window.key.P:
+            # self._dump_camera_pose()
+            camera_pose = self._get_camera_pose()
+            print('Save camera pose:', camera_pose)
+            np.savetxt('camera_pose.txt', camera_pose)
+
         if self._message_text is not None:
             self._message_opac = 1.0 + self._ticks_till_fade
+
+    def _get_camera_pose(self):
+        scene = self._scene
+        camera_pose = scene.get_pose(scene.main_camera_node)
+        return camera_pose
+    
+    def _dump_camera_pose(self):
+        return self._get_camera_pose()
 
     @staticmethod
     def _time_event(dt, self):
